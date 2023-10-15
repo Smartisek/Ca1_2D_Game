@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class playerMovement : MonoBehaviour
 {
 
@@ -18,12 +19,20 @@ public class playerMovement : MonoBehaviour
 // Variable for checking if player is on the ground 
     private bool grounded;
 
+// Variable for accessing animator
+
+// Variables for sounds and accesing audio
+private AudioSource audioPlayer;
+public AudioClip jumpSound;
+
+// Variable for accesing animator
     private Animator animate;
     // Start is called before the first frame update
     void Awake()
     {
      bodyRigid = GetComponent<Rigidbody2D>();
      animate = GetComponent<Animator>();
+    audioPlayer = GetComponent<AudioSource>();
 
     }
 
@@ -55,6 +64,8 @@ public class playerMovement : MonoBehaviour
         bodyRigid.velocity = new Vector2(bodyRigid.velocity.x, jumpHeight);
         animate.SetTrigger("Jump");
         grounded = false;
+        PlaySound(jumpSound);
+        
 
     }
 
@@ -64,5 +75,11 @@ public class playerMovement : MonoBehaviour
         gameObject.transform.localScale = currentScale;
         facesRight = !facesRight;
 
+    }
+
+// Function for being able to play sounds 
+    private void PlaySound(AudioClip clip){
+            audioPlayer.clip = clip;
+            audioPlayer.Play();
     }
 }
