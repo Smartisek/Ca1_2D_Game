@@ -18,12 +18,12 @@ public class playerMovement : MonoBehaviour
 
 // Variable for checking if player is on the ground 
     private bool grounded;
-
-// Variable for accessing animator
+   
 
 // Variables for sounds and accesing audio
 private AudioSource audioPlayer;
 public AudioClip jumpSound;
+public AudioClip runningSound;
 
 // Variable for accesing animator
     private Animator animate;
@@ -32,7 +32,9 @@ public AudioClip jumpSound;
     {
      bodyRigid = GetComponent<Rigidbody2D>();
      animate = GetComponent<Animator>();
-    audioPlayer = GetComponent<AudioSource>();
+     audioPlayer = GetComponent<AudioSource>();
+
+
 
     }
 
@@ -46,6 +48,10 @@ public AudioClip jumpSound;
 
         if(horizontalInput>0 && !facesRight || horizontalInput <0 && facesRight){
             Flip();
+        }
+
+        if(horizontalInput !=0 && grounded){
+            PlaySound(runningSound);
         }
         
         if(Input.GetKeyDown(KeyCode.Space)){
