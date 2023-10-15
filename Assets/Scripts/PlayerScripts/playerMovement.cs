@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playerMovement : MonoBehaviour
@@ -13,6 +14,9 @@ public class playerMovement : MonoBehaviour
 
 // Boolean variable for flip function to know if we are facing right
     private bool facesRight = true;
+
+// Variable for checking if player is on the ground 
+    private bool grounded;
 
     private Animator animate;
     // Start is called before the first frame update
@@ -41,10 +45,17 @@ public class playerMovement : MonoBehaviour
 
     }
     
+    private void OnCollisionEnter2D(Collision2D other){
+            if(other.gameObject.CompareTag("IsGrounded")){
+                grounded = true;
+            }
+    }
 
     void Jump(){
         bodyRigid.velocity = new Vector2(bodyRigid.velocity.x, jumpHeight);
         animate.SetTrigger("Jump");
+        grounded = false;
+
     }
 
     void Flip(){
