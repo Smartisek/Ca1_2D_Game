@@ -12,6 +12,8 @@ public class playerMovement : MonoBehaviour
     public float moveSpeed = 5f;
 // Getting access to Rigidbody2D
     private Rigidbody2D bodyRigid;
+    private BoxCollider2D boxCollider;
+    [SerializeField] private LayerMask groundLayer;
 
 // Boolean variable for flip function to know if we are facing right
     private bool facesRight = true;
@@ -33,6 +35,7 @@ public AudioClip runningSound;
      bodyRigid = GetComponent<Rigidbody2D>();
      animate = GetComponent<Animator>();
      audioPlayer = GetComponent<AudioSource>();
+     boxCollider = GetComponent<BoxCollider2D>();
 
 
 
@@ -61,9 +64,9 @@ public AudioClip runningSound;
     }
     
     private void OnCollisionEnter2D(Collision2D other){
-            if(other.gameObject.CompareTag("IsGrounded")){
-                grounded = true;
-            }
+            // if(other.gameObject.CompareTag("IsGrounded")){
+            //     grounded = true;
+            // }
     }
 
     void Jump(){
@@ -88,4 +91,9 @@ public AudioClip runningSound;
             audioPlayer.clip = clip;
             audioPlayer.Play();
     }
+
+    private bool IsGround(){
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        return raycastHit.collider != null;
+    } 
 }
