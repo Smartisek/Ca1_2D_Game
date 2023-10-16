@@ -798,7 +798,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -822,8 +822,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2d79a37783731478121e27ba9b6e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 7
+  jumpHeight: 12
   moveSpeed: 10
+  maxJumps: 1
+  wallJumpX: 1200
+  wallJumpY: 800
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
