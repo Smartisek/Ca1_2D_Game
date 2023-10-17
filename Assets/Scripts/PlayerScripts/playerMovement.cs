@@ -6,7 +6,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 
-public class playerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
 
 // Variables for jumping power and movement speed accessable from inside unity 
@@ -36,7 +36,7 @@ public AudioClip jumpSound;
 public AudioClip runningSound;
 
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
      bodyRigid = GetComponent<Rigidbody2D>();
      animate = GetComponent<Animator>();
@@ -48,7 +48,7 @@ public AudioClip runningSound;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
 // Assigning players horizontal input to horizontalInput variable and when it's axis are not 0, meaning he is moving
 // then animation goes from idle to runnning 
@@ -101,7 +101,7 @@ public AudioClip runningSound;
         // print(MathF.Sin(transform.localScale.x));
     }
 
-    void Jump(){
+    private void Jump(){
 // if player is on wall and has no extra jumps then dont do anything and return, code uder wont be executed
     if(!IsOnWall() && jumpCounter <=0) return;
 
@@ -143,7 +143,7 @@ public AudioClip runningSound;
 
 // Function for flipping character when facing left
 // First gets current position and multiplies with -1 to flip it, then asigns this value back to currentScale and changes boolean to be false
-    void Flip(){
+    private void Flip(){
         Vector3 currentScale = gameObject.transform.localScale;
         currentScale.x *= -1;
         gameObject.transform.localScale = currentScale;
@@ -171,5 +171,10 @@ public AudioClip runningSound;
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x,0), 0.1f, wallLayer);
         return raycastHit.collider != null;
     } 
+
+// If any of those conditions are not met then the function will return false;
+    public bool CanAttack(){
+        return horizontalInput ==0 && !IsOnWall();
+    }
 
 }
