@@ -131,8 +131,8 @@ public AudioClip runningSound;
 // using function addForce which takes in two parameters, force for X axes and force for Y axes
 // X axes is current x position and multiplied by the force wallJumpX, Y axes gets force wallJumpY
 // The effect that this AddForce with Mathf.Sign create is like being pushed in this trajectory ")"
-// The MathF.Sign is a function that returns value between -1 and 1, in this case it gets value of transform.localScale.x
-// but we need the player to have an effect of being pushed away from the wall so we change the Sin value with - in front of Mathf.Sign
+// The MathF.Sign is a function that returns value between -1 and 1 (-1 when number is negative, and 1 when number is positive or zero), in this case it gets value of transform.localScale.x
+// but we need the player to have an effect of being pushed away from the wall so we change the Sign value with - in front of Mathf.Sign
 // then flip the player when beign pushed 
     private void WallJump(){
         bodyRigid.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x)* wallJumpX, wallJumpY));
@@ -172,7 +172,7 @@ public AudioClip runningSound;
         return raycastHit.collider != null;
     } 
 
-// If any of those conditions are not met then the function will return false;
+// If any of those conditions are not met then the function will return false, meaning player is not able to perform attack;
     public bool CanAttack(){
         return horizontalInput ==0 && !IsOnWall();
     }
