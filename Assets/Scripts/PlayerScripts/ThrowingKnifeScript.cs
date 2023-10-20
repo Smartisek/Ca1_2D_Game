@@ -7,6 +7,7 @@ public class ThrowingKnifeScript : MonoBehaviour
 {
 
     [SerializeField] private float speed;
+    [SerializeField] private int knifeDamage;
     private bool hit;
     private BoxCollider2D boxCollider;
     private Animator anim;
@@ -48,6 +49,10 @@ private void OnTriggerEnter2D(Collider2D collision){
     hit = true;
     boxCollider.enabled = false;
     anim.SetTrigger("explode");
+
+    if(collision.tag == "EnemyTag"){
+        collision.GetComponent<EnemyController>().TakeDamage(knifeDamage);
+    }
 }
 
 // When the player actually throws a knife, we need to know which way he is facing and send knife the same direction 
