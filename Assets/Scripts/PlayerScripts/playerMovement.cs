@@ -4,31 +4,34 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
+// These components will be required for this game object 
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 
 public class PlayerMovement : MonoBehaviour
 {
 
-// Variables for jumping power and movement speed accessable from inside unity 
+ [Header("Jump Variables")]
     [SerializeField] public float jumpHeight = 5f;
-    [SerializeField] public float moveSpeed = 5f;
     [SerializeField] private int maxJumps;
     private int jumpCounter;
+    [SerializeField] private float wallJumpX; // Wall jumping variables 
+    [SerializeField] private float wallJumpY; // Wall jumping variables 
 
-// Wall jumping variables 
-    [SerializeField] private float wallJumpX;
-    [SerializeField] private float wallJumpY;
+[Header("Movement Variables")]
+    [SerializeField] public float moveSpeed = 5f;
+    private float horizontalInput;
+    private bool facesRight = true; // Variable to use in methods like Flip()
 
 // Referencing access to unity Components
     private Rigidbody2D bodyRigid;
     private BoxCollider2D boxCollider;
     private Animator animate;
-// Accessing the layers in unity
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private LayerMask wallLayer;
-// Variables to use in methods like facesRight for Flip()
-     private float horizontalInput;
-     private bool facesRight = true;
+    [SerializeField] private LayerMask groundLayer; // Accessing the layers in unity
+    [SerializeField] private LayerMask wallLayer; // Accessing the layers in unity
+
 
 // Variables for sounds and accesing audio
 private AudioSource audioPlayer;
