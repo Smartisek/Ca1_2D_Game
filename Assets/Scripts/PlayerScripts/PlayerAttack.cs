@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float attackRange;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private int dealDamage;
 
     private Animator anim;
     private PlayerMovement playerMovement;
@@ -68,7 +69,7 @@ public class PlayerAttack : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
 
         foreach(Collider2D enemy in hitEnemies){
-            print("Hit");
+            enemy.GetComponent<EnemyController>().TakeDamage(dealDamage);
         }
     }
 
