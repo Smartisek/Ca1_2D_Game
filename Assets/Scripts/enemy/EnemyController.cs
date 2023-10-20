@@ -25,6 +25,15 @@ public class EnemyController : MonoBehaviour
         currentHealth -= damage;
         anim.SetTrigger("hurt");
 
+        if(currentHealth <= 0){
+            Die();
+        }
+
+    }
+
+    private void Die(){
+        anim.SetTrigger("dead");
+        gameObject.SetActive(false);
     }
 
 

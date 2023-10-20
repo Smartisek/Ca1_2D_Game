@@ -36,6 +36,7 @@ public class PlayerAttack : MonoBehaviour
         if(Input.GetMouseButtonDown(0)){
             AttackMelee();
         }
+
     }
 
 // function for throwing knifes, set animation and reset cooldown, then makes the knife fly in the right direction
