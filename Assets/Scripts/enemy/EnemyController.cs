@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -12,13 +13,18 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float attackRange;
     [SerializeField] private LayerMask playerMask;
     [SerializeField] private int damageAttack;
+    [SerializeField] private float attackCooldown = 1.5f;
+    private float nextAttack;
+   
 
     private bool movingLeft;
     private float leftEdge;
     private float rightEdge; 
     private Animator anim;
     private int currentHealth;
-    private bool canChangeDirection;
+
+    private bool playerDetected;
+
 
     private void Awake()
     {
@@ -28,14 +34,30 @@ public class EnemyController : MonoBehaviour
         leftEdge = transform.position.x - movementDistance;
         rightEdge = transform.position.x + movementDistance;
 
+        nextAttack = attackCooldown;
+
         
     }
 
     private void Update(){
 
-        print(currentHealth);
+        if(nextAttack > 0){
+            nextAttack -=Time.deltaTime;
+        } else if (nextAttack <= 0){
+            AttackPlayer();
+            nextAttack = attackCooldown;
+        }
 
         EnemyMovement();
+        
+        // var collider = Physics2D.OverlapCircle(transform.position, attackRange, playerMask);
+        // playerDetected = collider != null;
+        // if(playerDetected){
+        //     collider.GetComponent<Health>().GetDamaged(damageAttack);
+        //     anim.SetTrigger("attack");
+        // }
+
+
 
     }
 
@@ -76,27 +98,33 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.tag == "Player"){
-            collision.GetComponent<Health>().GetDamaged(damageAttack);
+    
+    private void AttackPlayer(){
+        var collider = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerMask);
+        playerDetected = collider != null;
+        if(playerDetected){
+            collider.GetComponent<Health>().GetDamaged(damageAttack);
+            anim.SetTrigger("attack");
         }
     }
-    // private void AttackPlayer(){
-
-    //     anim.SetTrigger("attack");
-        
-    //     Collider2D [] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerMask);
-
-    //     foreach(Collider2D player in hitPlayer){
-    //         player.GetComponent<Health>().GetDamaged(damageAttack);
-    //     }
-    // }
 
     private void Flip(){
         Vector3 currentScale = gameObject.transform.localScale;
         currentScale.x *= -1;
         gameObject.transform.localScale = currentScale;
     }
+
+    // private void AttackPlayer(){
+       
+    //     var collider = Physics2D.OverlapCircle(transform.position, attackRange, playerMask);
+    //     playerDetected = collider != null;
+    //     if(playerDetected){
+    //         GetComponent<Health>().GetDamaged(damageAttack);
+    //         anim.SetTrigger("attack");
+    //     }
+
+       
+    // }
 
     void OnDrawGizmosSelected(){
         if(attackPoint == null){
