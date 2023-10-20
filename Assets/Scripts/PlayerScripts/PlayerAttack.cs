@@ -8,6 +8,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float attackCooldown;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] knifesHolder;
+
+    [SerializeField] private float attackRange;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private LayerMask enemyLayer;
+
     private Animator anim;
     private PlayerMovement playerMovement;
 // For start set to infinity otherwise could never use attack because of the condition in update 
@@ -22,11 +27,14 @@ public class PlayerAttack : MonoBehaviour
     private void Update()
     {
 // Using left mouse button for throwing knife if these conditions are met 
-        if(Input.GetMouseButtonDown(0) && cooldownTimer > attackCooldown && playerMovement.CanAttack()){
+        if(Input.GetMouseButtonDown(1) && cooldownTimer > attackCooldown && playerMovement.CanAttack()){
             AttackKnife();
             cooldownTimer += Time.deltaTime; 
         }
 
+        if(Input.GetMouseButtonDown(0)){
+            AttackMelee();
+        }
     }
 
 // function for throwing knifes, set animation and reset cooldown, then makes the knife fly in the right direction
@@ -53,5 +61,21 @@ public class PlayerAttack : MonoBehaviour
         }
         
         return 0;
+    }
+
+    private void AttackMelee(){
+        anim.SetTrigger("attack");
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+
+        foreach(Collider2D enemy in hitEnemies){
+            print("Hit");
+        }
+    }
+
+    void OnDrawGizmosSelected(){
+        if(attackPoint == null){
+            return;
+        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
