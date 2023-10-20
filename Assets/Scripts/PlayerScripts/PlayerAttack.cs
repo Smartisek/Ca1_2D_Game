@@ -33,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
             cooldownTimer += Time.deltaTime; 
         }
 
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButtonDown(0) && playerMovement.CanAttack()){
             AttackMelee();
         }
 
@@ -65,15 +65,21 @@ public class PlayerAttack : MonoBehaviour
         return 0;
     }
 
+// Creates a collider2d array of all the enemies player hits
+// Inside unity I create an object attackPoint and then with physics2d overlapcircle all function draw a circle around this object 
+// this functiom takes in the positon, range and layer, my layer is set to enemies
     private void AttackMelee(){
         anim.SetTrigger("attack");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
 
+// We loop through our array of enemies hit and call on function inside enemy controller takedamage to damage the enemy with chosen amount 
         foreach(Collider2D enemy in hitEnemies){
             enemy.GetComponent<EnemyController>().TakeDamage(dealDamage);
         }
     }
 
+// Draw Gizmos draws me an imaginery circle that i created in the function above, without it i wouldnt be able to see the circle 
+// if object attackpoint is null than just return and dont do anything, otherwise draw a speher with position of an object and attackrange 
     void OnDrawGizmosSelected(){
         if(attackPoint == null){
             return;
