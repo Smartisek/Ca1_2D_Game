@@ -17,7 +17,8 @@ public class Enemy_SidewayTrap : MonoBehaviour
     }
 
 // Simple movement, if we are movingLeft and its position is more than the left edge than move to the other side, else if its not at the edge movingLeft is false
-// Else if moving left is not true and its position is more than right edge  
+// Else if moving left is not true and its position is more than right edge
+// Probably not the most effective code but i sticked with it in other scripts  
     private void Update(){
         if(movingLeft){
             if(transform.position.x > leftEdge){
