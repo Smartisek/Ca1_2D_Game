@@ -1781,10 +1781,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpHeight: 12
-  moveSpeed: 10
   maxJumps: 1
   wallJumpX: 1200
   wallJumpY: 800
+  moveSpeed: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -10313,7 +10313,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -112, y: 56}
   m_SizeDelta: {x: -586, y: -286}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1601297659
