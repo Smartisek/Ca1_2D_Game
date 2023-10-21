@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+// For this whole health system I worked with tutorial from Pandemonium on Youtube: https://www.youtube.com/watch?v=yxzg8jswZ8A&list=PLgOEwFbvGm5o8hayFB6skAfa8Z-mw4dPV&index=7
 
     [SerializeField] private float fullhealth;
     private Animator anim;

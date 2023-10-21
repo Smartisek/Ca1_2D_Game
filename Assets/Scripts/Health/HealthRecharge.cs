@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HealthRecharge : MonoBehaviour
 {
-   [SerializeField] private float healthValue;
+   [SerializeField] private float healthValue; 
 
 // When player collides with this object then we call on script Health and use its AddHealth function with healtValue set inside unity
 // If collision tag == "Player", I have a tag on players object so it knows when it collides with player 
