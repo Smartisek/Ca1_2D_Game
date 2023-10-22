@@ -50,6 +50,7 @@ public class PlayerAttack : MonoBehaviour
     // meaning either 1 or -1 depending on which way he is facing, if left it will get -1 and send it that way and the otherway around 
     knifesHolder[FindKnife()].transform.position = firePoint.position;
     knifesHolder[FindKnife()].GetComponent<ThrowingKnifeScript>().SetDirection(Mathf.Sign(transform.localScale.x));
+        AudioManager.instance.PlayKnifeThrow();
     }
 
 // We need to loop thorugh the array of knife so for loop has to be used to loop through the objects inside of container 
@@ -71,6 +72,7 @@ public class PlayerAttack : MonoBehaviour
     private void AttackMelee(){
         anim.SetTrigger("attack");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+        AudioManager.instance.PlaySwordAttack();
 
 // We loop through our array of enemies hit and call on function inside enemy controller takedamage to damage the enemy with chosen amount 
         foreach(Collider2D enemy in hitEnemies){

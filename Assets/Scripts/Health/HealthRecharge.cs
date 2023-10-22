@@ -12,7 +12,7 @@ public class HealthRecharge : MonoBehaviour
 // Then when collide and recharged just disable this object 
   private void OnTriggerEnter2D(Collider2D collision){
     if(collision.tag == "Player"){
-        
+        AudioManager.instance.PlayPickHealth();
         collision.GetComponent<Health>().AddHealth(healthValue);
         gameObject.SetActive(false);
     }

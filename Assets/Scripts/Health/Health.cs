@@ -23,6 +23,7 @@ public class Health : MonoBehaviour
 // and full health which is set inside unity through serialize field 
     public void GetDamaged(float damage){
         currentHealth =  Mathf.Clamp(currentHealth - damage, 0, fullhealth);
+        AudioManager.instance.PlayHurtSound();
 // If players current health is more than zero meaning he isnt dead then we play hurt animation 
         if(currentHealth > 0 ){
             // Get hurt
@@ -31,6 +32,7 @@ public class Health : MonoBehaviour
         } else {
             if(!isDead){
             anim.SetTrigger("die");
+            AudioManager.instance.PlayDieSound();
              GetComponent<PlayerMovement>().enabled = false; 
             }
             

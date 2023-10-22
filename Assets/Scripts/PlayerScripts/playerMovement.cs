@@ -35,8 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
 // Variables for sounds and accesing audio
 private AudioSource audioPlayer;
-public AudioClip jumpSound;
-public AudioClip runningSound;
+// public AudioClip jumpSound;
 
     // Start is called before the first frame update
     private void Awake()
@@ -70,7 +69,7 @@ public AudioClip runningSound;
 // When horizontalInput is not 0 meaning we are moving and we are on a ground (IsGrond true)
 // Play running sound
     if(horizontalInput !=0 && IsGround()){
-            PlaySound(runningSound);
+    
         }
         
 
@@ -116,13 +115,13 @@ public AudioClip runningSound;
 // then change animation and play sound  
         if(IsGround()){
             bodyRigid.velocity = new Vector2(bodyRigid.velocity.x, jumpHeight);
-            PlaySound(jumpSound);
+            AudioManager.instance.PlayJumpSound();
             animate.SetTrigger("Jump");
 // if jumpCounter is more than zero, then do another jump and decrease jumpCounter by one  
         } else{
             if(jumpCounter >0){
             bodyRigid.velocity = new Vector2(bodyRigid.velocity.x, jumpHeight);
-            PlaySound(jumpSound);
+            AudioManager.instance.PlayJumpSound();
             animate.SetTrigger("Jump");
             jumpCounter--;
             }
@@ -140,7 +139,7 @@ public AudioClip runningSound;
     private void WallJump(){
         bodyRigid.AddForce(new Vector2(-Mathf.Sign(transform.localScale.x)* wallJumpX, wallJumpY));
         animate.SetTrigger("Jump");
-        PlaySound(jumpSound);
+        AudioManager.instance.PlayJumpSound();
         Flip();
     }
 

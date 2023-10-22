@@ -10,6 +10,7 @@ public class ScoreBird : MonoBehaviour
    private void OnTriggerEnter2D(Collider2D collision){
     if(collision.tag == "Player"){
         collision.GetComponent<ScoreCounter>().IncreaseScore();
+        AudioManager.instance.PlayScoreSound();
         gameObject.SetActive(false);
     }
   }

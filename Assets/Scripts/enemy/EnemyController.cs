@@ -72,6 +72,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(int damageHurt){
         currentHealth -= damageHurt;
         anim.SetTrigger("hurt");
+        AudioManager.instance.PlayHurtSound();
 
 // If enemy helath gets to zero, we call die function to kill/remove him 
         if(currentHealth <= 0){
@@ -122,6 +123,7 @@ public class EnemyController : MonoBehaviour
         playerDetected = collider != null;
         if(playerDetected){
             collider.GetComponent<Health>().GetDamaged(damageAttack);
+             AudioManager.instance.PlayKnifeThrow();
             anim.SetTrigger("attack");
         }
     }
