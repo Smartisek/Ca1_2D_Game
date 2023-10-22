@@ -10,12 +10,14 @@ public class Health : MonoBehaviour
     private Animator anim;
     public float currentHealth {get ; private set;}
     private bool isDead;
+    Vector2 startPosition;
+    
 
 // When start set the current health to be full and acces animator 
     private void Awake(){
         currentHealth = fullhealth;
         anim = GetComponent<Animator>();
-
+        startPosition = transform.position;
     }
 
 // function for taking damage, takes in float for how much hurt player will get 
@@ -33,7 +35,10 @@ public class Health : MonoBehaviour
             if(!isDead){
             anim.SetTrigger("die");
             AudioManager.instance.PlayDieSound();
-             GetComponent<PlayerMovement>().enabled = false; 
+            StartCoroutine(Respawn(1f));
+             GetComponent<PlayerMovement>().enabled = false;
+             GetComponent<PlayerAttack>().enabled = false;
+             StartCoroutine(RespawnMovementDisabled(1.5f));
             }
             
         }
@@ -49,6 +54,22 @@ public class Health : MonoBehaviour
 // Function for HealthRecharge when picking up a heart from a ground, same like get damage function but we give plus to current health the value of picked heart 
     public void AddHealth(float value){
         currentHealth =  Mathf.Clamp(currentHealth + value, 0, fullhealth);
+    }
+
+// Respawn code from Rehope Games on Youtube: https://www.youtube.com/watch?v=odStG_LfPMQ
+// When coroutine called its gonna wait duration seconds and then execute code below 
+// respawn to start position and set health to full
+    IEnumerator Respawn(float duration){
+        yield return new WaitForSeconds(duration);
+        transform.position = startPosition;
+        currentHealth = fullhealth;
+    }
+
+// Gives player back his movement and attack ability
+    IEnumerator RespawnMovementDisabled(float value){
+        yield return new WaitForSeconds(value);
+        GetComponent<PlayerMovement>().enabled = true;
+        GetComponent<PlayerAttack>().enabled = true;
     }
 
 

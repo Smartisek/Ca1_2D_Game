@@ -1859,7 +1859,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 11
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1883,7 +1883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2d79a37783731478121e27ba9b6e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 12
+  jumpHeight: 15
   maxJumps: 1
   wallJumpX: 1200
   wallJumpY: 800
@@ -1894,8 +1894,6 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 128
-  jumpSound: {fileID: 8300000, guid: c889dd69ff40ace4e9a996adf6d1fb64, type: 3}
-  runningSound: {fileID: 8300000, guid: f4e828aeb6e6ebe45a9ffd731ec88b8b, type: 3}
 --- !u!82 &582655183
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5821,7 +5819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd79722ffa800bd4e8ad127330354217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 4
   movementDistance: 3
   speed: 5
 --- !u!95 &935069885
@@ -6876,12 +6874,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6d576c6bb30ce94b9d1d3560e5bef22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jump: {fileID: 0}
-  swordAttack: {fileID: 0}
-  gettingHurt: {fileID: 0}
-  score: {fileID: 0}
-  knifeThrow: {fileID: 0}
+  jump: {fileID: 8300000, guid: 47f1ca9bfe89f7d419faee787cf905aa, type: 3}
+  swordAttack: {fileID: 8300000, guid: 2817a4e0d6e5e3149976f43dcfd111bc, type: 3}
+  gettingHurt: {fileID: 8300000, guid: ea51d6df135a53c41a7c15cd4d94024d, type: 3}
+  score: {fileID: 8300000, guid: a49b793427721394d94455f20b93e368, type: 3}
+  knifeThrow: {fileID: 8300000, guid: 2c49e7dba31178d40848fbd1fefddde4, type: 3}
   backgroundMusic: {fileID: 0}
+  die: {fileID: 8300000, guid: e19fbc5cd9a2eb741b3547a407bfd469, type: 3}
+  health: {fileID: 8300000, guid: 5e4f394cf24d7f24cbdb4076e6aa11f4, type: 3}
 --- !u!4 &1470562386
 Transform:
   m_ObjectHideFlags: 0
@@ -7182,6 +7182,10 @@ PrefabInstance:
     - target: {fileID: 4611267122418887429, guid: 1e5c6d8b6b3419a4d9a99195a834f816, type: 3}
       propertyPath: speed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4611267122418887429, guid: 1e5c6d8b6b3419a4d9a99195a834f816, type: 3}
+      propertyPath: maxHealth
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4611267122418887429, guid: 1e5c6d8b6b3419a4d9a99195a834f816, type: 3}
       propertyPath: movementDistance
@@ -8285,6 +8289,10 @@ PrefabInstance:
     - target: {fileID: 4611267122418887429, guid: 1e5c6d8b6b3419a4d9a99195a834f816, type: 3}
       propertyPath: speed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4611267122418887429, guid: 1e5c6d8b6b3419a4d9a99195a834f816, type: 3}
+      propertyPath: maxHealth
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4611267122418887429, guid: 1e5c6d8b6b3419a4d9a99195a834f816, type: 3}
       propertyPath: movementDistance
