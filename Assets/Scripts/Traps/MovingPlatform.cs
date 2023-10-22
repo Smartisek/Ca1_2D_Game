@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
@@ -42,14 +43,12 @@ public class MovingPlatform : MonoBehaviour
             collision.gameObject.transform.SetParent(transform);
         }
     }
-
 // When this collision ends we remove parent on that gameObject player with null 
 // I got this solution from Coding in Flow on Youtube: https://www.youtube.com/watch?v=UlEE6wjWuCY&list=PLrnPJCHvNZuCVTz6lvhR81nnaf1a-b67U&index=9
-    private void OnCollisonExit2D(Collision collision){
+   private void OnCollisionExit2D(Collision2D collision){
         if(collision.gameObject.name == "Player"){
-            collision.gameObject.transform.SetParent(null);
-        }
+        collision.gameObject.transform.SetParent(null);
     }
 
-
+   }
 }

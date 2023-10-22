@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
 
 [Header("Enemy Attack")]
     [SerializeField] private Transform attackPoint;
+    [SerializeField] private Transform backPoint;
     [SerializeField] private float attackRange;
     [SerializeField] private LayerMask playerMask;
     [SerializeField] private int damageAttack;
@@ -59,14 +60,6 @@ public class EnemyController : MonoBehaviour
 
         EnemyMovement();
         
-        // var collider = Physics2D.OverlapCircle(transform.position, attackRange, playerMask);
-        // playerDetected = collider != null;
-        // if(playerDetected){
-        //     collider.GetComponent<Health>().GetDamaged(damageAttack);
-        //     anim.SetTrigger("attack");
-        // }
-
-
 
     }
 
@@ -94,8 +87,10 @@ public class EnemyController : MonoBehaviour
 // This could be done so much better, for example follow player when he enters a raycast box, than just walking from side to side
 // but due to being in a rush I decided to leave this simple and come back to it if I finish with spare time 
     private void EnemyMovement(){
+        var backCollider = Physics2D.OverlapCircle(backPoint.position, 0.5f, playerMask); // I wanted to make the enemy to turn when player is behind him
+        // So i created another circle on his back and when player enters it returns value
           if(movingLeft){
-            if(transform.position.x > leftEdge){
+            if(transform.position.x > leftEdge && !backCollider){
                 transform.position = new Vector3(transform.position.x - speed* Time.deltaTime, transform.position.y, transform.position.z);
                 anim.SetBool("isRunning", true);
             }else {
@@ -103,8 +98,8 @@ public class EnemyController : MonoBehaviour
                 Flip();
 
             }
-        } else {
-            if(transform.position.x < rightEdge){
+        } else if(!movingLeft || backCollider){  //if we are moving right or player is behind 
+            if(transform.position.x < rightEdge && !backCollider){  //if our position is less than right edge and player is not behind than move right
                 transform.position = new Vector3(transform.position.x + speed* Time.deltaTime, transform.position.y, transform.position.z);
 
                 anim.SetBool("isRunning", true);
@@ -113,6 +108,8 @@ public class EnemyController : MonoBehaviour
                 Flip();
             }
         }
+        // this collider on enemy back came to my mind and somehow when i implemented it, it worked, i had to try many variations in if statements with backCollider 
+        // to get it right, honestly was mostly guessing 
     }
 
     
@@ -144,6 +141,14 @@ public class EnemyController : MonoBehaviour
             return;
         }
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Gizmos.DrawWireSphere(backPoint.position, 0.5f);
+
     }
 
+    // private void TurnPlayer(){
+    //     var backCollider = Physics2D.OverlapCircle(backPoint.position, 0.5f, playerMask);
+    //     if(backCollider){
+    //         Flip();
+    //     }
+    // }
 }

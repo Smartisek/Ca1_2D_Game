@@ -78,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -356,7 +356,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Checkpoint (Flag Idle)(64x64)_0: -8187355101989356663
+      Checkpoint (Flag Idle)(64x64)_1: 3854939560234354291
+      Checkpoint (Flag Idle)(64x64)_2: -2176918498148329165
+      Checkpoint (Flag Idle)(64x64)_3: -1878543983233424424
+      Checkpoint (Flag Idle)(64x64)_4: 5249495973877922429
+      Checkpoint (Flag Idle)(64x64)_5: 7294162130811222863
+      Checkpoint (Flag Idle)(64x64)_6: 5907192917678821646
+      Checkpoint (Flag Idle)(64x64)_7: -3698963325330885405
+      Checkpoint (Flag Idle)(64x64)_8: -7168325035351650290
+      Checkpoint (Flag Idle)(64x64)_9: -8728669653598591988
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
