@@ -26,7 +26,11 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-// Using left mouse button for throwing knife if these conditions are met 
+        AttackHandle();
+    }
+
+    private void AttackHandle(){
+        // Using left mouse button for throwing knife if these conditions are met 
         if(Input.GetMouseButtonDown(1) && cooldownTimer > attackCooldown && playerMovement.CanAttack()){
             AttackKnife();
             cooldownTimer += Time.deltaTime; 
@@ -35,7 +39,6 @@ public class PlayerAttack : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && playerMovement.CanAttack()){
             AttackMelee();
         }
-
     }
 
 // function for throwing knifes, set animation and reset cooldown, then makes the knife fly in the right direction

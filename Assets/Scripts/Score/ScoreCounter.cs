@@ -9,7 +9,7 @@ public class ScoreCounter : MonoBehaviour
     [SerializeField] TMP_Text scoreText;
     private int currentScore = 0;
 
-    // assign 0 score when start 
+    // assign 0 score when start and display it as a string 
     private void Start(){
         scoreText.text = currentScore.ToString();
     }

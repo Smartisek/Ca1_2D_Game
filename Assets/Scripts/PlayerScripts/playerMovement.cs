@@ -127,13 +127,13 @@ private AudioSource audioPlayer;
         return horizontalInput ==0 && !IsOnWall();
     }
 
-// Assigning players horizontal input to horizontalInput variable and when it's axis are not 0, meaning he is moving
-// then animation goes from idle to runnning 
     public void Run(){
+ // Assigning players horizontal input to horizontalInput variable and when it's axis are not 0, meaning he is moving
+// then animation goes from idle to runnning 
         horizontalInput = Input.GetAxisRaw("Horizontal");
         animate.SetBool("isRunning", horizontalInput !=0);
 
-        // Statement for flipping sides of player when running 
+// Statement for flipping sides of player when running 
 // when horizontalInput (meaning players horizontal axes) and boolean for facing right
 // First condition means "x" is more than 0 so we are facing right but our facing right is false (we do not face right) needs to flip
 // Second condition means "x" is less than 0 so we face,go left but our character is facing right is true so we need to flip him
@@ -149,8 +149,8 @@ private AudioSource audioPlayer;
         }
     }
 
-
 private void JumpHandling(){
+// If we are moving in plus and is not facing right flip, if moving in minus and facing right then flip
       if(horizontalInput>0 && !facesRight || horizontalInput <0 && facesRight){
             Flip();
         }

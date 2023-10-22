@@ -6,14 +6,16 @@ using UnityEngine;
 public class ThrowingKnifeScript : MonoBehaviour
 {
 
+    // Script followed by Pandemonium on Youtube: https://www.youtube.com/watch?v=PUpC44Q64zY&list=PLgOEwFbvGm5o8hayFB6skAfa8Z-mw4dPV&index=4
+[Header("Knife Variables")]
     [SerializeField] private float speed;
     [SerializeField] private int knifeDamage;
     private bool hit;
-    private BoxCollider2D boxCollider;
-    private Animator anim;
     private float direction;
     private float lifeTime;
-    
+
+    private BoxCollider2D boxCollider;
+    private Animator anim;
     private void Awake(){
 
         boxCollider = GetComponent<BoxCollider2D>();

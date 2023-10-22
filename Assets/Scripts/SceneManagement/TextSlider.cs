@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class TextSlider : MonoBehaviour
 {
+// Followed tutorial from Chris' Tutorials on youtube: https://www.youtube.com/watch?v=FfaG9TvCe5g&t=14s
    [SerializeField] TextMeshProUGUI numberText;
    private Slider slider;
 
