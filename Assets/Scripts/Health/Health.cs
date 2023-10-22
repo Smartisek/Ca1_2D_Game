@@ -5,11 +5,13 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
 // For this whole health system I worked with tutorial from Pandemonium on Youtube: https://www.youtube.com/watch?v=yxzg8jswZ8A&list=PLgOEwFbvGm5o8hayFB6skAfa8Z-mw4dPV&index=7
-
+[Header("Health variables")]
     [SerializeField] private float fullhealth;
-    private Animator anim;
-    public float currentHealth {get ; private set;}
+    public float currentHealth {get ; private set;} // allows me to get the value in other script(healthbar)
     private bool isDead;
+
+  private Animator anim;
+    // Vecor for respawn 
     Vector2 startPosition;
     
 
@@ -35,10 +37,10 @@ public class Health : MonoBehaviour
             if(!isDead){
             anim.SetTrigger("die");
             AudioManager.instance.PlayDieSound();
-            StartCoroutine(Respawn(1f));
-             GetComponent<PlayerMovement>().enabled = false;
-             GetComponent<PlayerAttack>().enabled = false;
-             StartCoroutine(RespawnMovementDisabled(1.5f));
+            StartCoroutine(Respawn(1f)); //After duration call respawn 
+             GetComponent<PlayerMovement>().enabled = false; //When player dies disable his movement 
+             GetComponent<PlayerAttack>().enabled = false;  //When player dies disable his attack 
+             StartCoroutine(RespawnAbilityEnable(1.5f)); //After time call respawn ability function 
             }
             
         }
@@ -66,7 +68,7 @@ public class Health : MonoBehaviour
     }
 
 // Gives player back his movement and attack ability
-    IEnumerator RespawnMovementDisabled(float value){
+    IEnumerator RespawnAbilityEnable(float value){
         yield return new WaitForSeconds(value);
         GetComponent<PlayerMovement>().enabled = true;
         GetComponent<PlayerAttack>().enabled = true;

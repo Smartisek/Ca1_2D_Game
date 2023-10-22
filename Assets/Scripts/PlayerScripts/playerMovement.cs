@@ -10,6 +10,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
 
+// For this script I mainly followed our script we worked on at school and then mainly for walljump i followed
+// tutorial from Pandemonium on youtuobe : https://www.youtube.com/watch?v=_UBpkdKlJzE&list=PLgOEwFbvGm5o8hayFB6skAfa8Z-mw4dPV&index=3 and
+// https://www.youtube.com/watch?v=oFO4pgrQPOI&list=PLgOEwFbvGm5o8hayFB6skAfa8Z-mw4dPV&index=13
+
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -44,63 +48,13 @@ private AudioSource audioPlayer;
      animate = GetComponent<Animator>();
      audioPlayer = GetComponent<AudioSource>();
      boxCollider = GetComponent<BoxCollider2D>();
-
-
-
     }
 
     // Update is called once per frame
     private void Update()
     {
-// Assigning players horizontal input to horizontalInput variable and when it's axis are not 0, meaning he is moving
-// then animation goes from idle to runnning 
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        animate.SetBool("isRunning", horizontalInput !=0);
-
-// Statement for flipping sides of player when running 
-// when horizontalInput (meaning players horizontal axes) and boolean for facing right
-// First condition means "x" is more than 0 so we are facing right but our facing right is false (we do not face right) needs to flip
-// Second condition means "x" is less than 0 so we face,go left but our character is facing right is true so we need to flip him
-// Statement calls flip function explained lower 
-        if(horizontalInput>0 && !facesRight || horizontalInput <0 && facesRight){
-            Flip();
-        }
-
-// When horizontalInput is not 0 meaning we are moving and we are on a ground (IsGrond true)
-// Play running sound
-    if(horizontalInput !=0 && IsGround()){
-    
-        }
-        
-
-      
-    if(Input.GetKeyDown(KeyCode.Space)){
-            Jump();
-        }
-
-// When the key is released and player is in the air then we make him fall faster by dividing its velocity.y by 2
-// So we get to make "charge" jump with holding key longer in the statement above 
-        if(Input.GetKeyUp(KeyCode.Space) && bodyRigid.velocity.y >0){
-            bodyRigid.velocity = new Vector2(bodyRigid.velocity.x, bodyRigid.velocity.y /2);
-        }
-
-// When player is on wall and is not trying to move any direection, then set gravity to 0 and vector to zero as well
-// so there is no force pulling player down, we stick to the wall like spider-man, almost 
-        if(IsOnWall()){
-            bodyRigid.gravityScale = 0;
-            bodyRigid.velocity = Vector2.zero;
-// else if player tries to move back then we set gravity back to default and give him control to move again 
-        } else {
-            bodyRigid.gravityScale = 3;
-            bodyRigid.velocity = new Vector2(horizontalInput * moveSpeed, bodyRigid.velocity.y);
-
-// When player falls back to the ground then we reset the jumpCounter so he is able to use his extra jump/jumps
-            if(IsGround()){
-                jumpCounter = maxJumps;
-            }
-        }
-
-        // print(MathF.Sin(transform.localScale.x));
+        Run();
+        JumpHandling();
     }
 
     private void Jump(){
@@ -153,12 +107,6 @@ private AudioSource audioPlayer;
 
     }
 
-// Function for being able to play sounds 
-    private void PlaySound(AudioClip clip){
-            audioPlayer.clip = clip;
-            audioPlayer.Play();
-    }
-
 // Method to check if we are on ground 
 // Creates a box on player, vector facing down, angle (0) and checks if this box intersects with a layer, in this case with groundLayer
 // Return statement returns null because when in the air there is nothing under the player so IsGround() will return false
@@ -179,4 +127,66 @@ private AudioSource audioPlayer;
         return horizontalInput ==0 && !IsOnWall();
     }
 
+// Assigning players horizontal input to horizontalInput variable and when it's axis are not 0, meaning he is moving
+// then animation goes from idle to runnning 
+    public void Run(){
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        animate.SetBool("isRunning", horizontalInput !=0);
+
+        // Statement for flipping sides of player when running 
+// when horizontalInput (meaning players horizontal axes) and boolean for facing right
+// First condition means "x" is more than 0 so we are facing right but our facing right is false (we do not face right) needs to flip
+// Second condition means "x" is less than 0 so we face,go left but our character is facing right is true so we need to flip him
+// Statement calls flip function explained lower 
+        if(horizontalInput>0 && !facesRight || horizontalInput <0 && facesRight){
+            Flip();
+        }
+
+        // When horizontalInput is not 0 meaning we are moving and we are on a ground (IsGrond true)
+// Play running sound
+    if(horizontalInput !=0 && IsGround()){
+    
+        }
+    }
+
+
+private void JumpHandling(){
+      if(horizontalInput>0 && !facesRight || horizontalInput <0 && facesRight){
+            Flip();
+        }
+
+// When horizontalInput is not 0 meaning we are moving and we are on a ground (IsGrond true)
+// Play running sound
+    if(horizontalInput !=0 && IsGround()){
+    
+        }
+        
+    if(Input.GetKeyDown(KeyCode.Space)){
+            Jump();
+        }
+
+// When the key is released and player is in the air then we make him fall faster by dividing its velocity.y by 2
+// So we get to make "charge" jump with holding key longer in the statement above 
+        if(Input.GetKeyUp(KeyCode.Space) && bodyRigid.velocity.y >0){
+            bodyRigid.velocity = new Vector2(bodyRigid.velocity.x, bodyRigid.velocity.y /2);
+        }
+
+// When player is on wall and is not trying to move any direection, then set gravity to 0 and vector to zero as well
+// so there is no force pulling player down, we stick to the wall like spider-man, almost 
+        if(IsOnWall()){
+            bodyRigid.gravityScale = 0;
+            bodyRigid.velocity = Vector2.zero;
+// else if player tries to move back then we set gravity back to default and give him control to move again 
+        } else {
+            bodyRigid.gravityScale = 3;
+            bodyRigid.velocity = new Vector2(horizontalInput * moveSpeed, bodyRigid.velocity.y);
+
+// When player falls back to the ground then we reset the jumpCounter so he is able to use his extra jump/jumps
+            if(IsGround()){
+                jumpCounter = maxJumps;
+            }
+        }
+
+        // print(MathF.Sin(transform.localScale.x));
+    }
 }

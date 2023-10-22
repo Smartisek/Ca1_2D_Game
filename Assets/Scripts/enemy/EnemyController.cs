@@ -5,30 +5,33 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-
-    [SerializeField] private int maxHealth;
+[Header("Enemy Movement")]
     [SerializeField] private int movementDistance;
     [SerializeField] private int speed;
+    private bool movingLeft;
+    private float leftEdge;
+    private float rightEdge;
+
+
+[Header("Enemy Attack")]
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange;
     [SerializeField] private LayerMask playerMask;
     [SerializeField] private int damageAttack;
     [SerializeField] private float attackCooldown = 1.5f;
-    private float nextAttack;
-   
-
-    private bool movingLeft;
-    private float leftEdge;
-    private float rightEdge; 
-    private Animator anim;
-    private int currentHealth;
-
+    [SerializeField] private int maxHealth;
     private bool playerDetected;
+    private float nextAttack;
+    private int currentHealth;
+ 
+    private Animator anim;
+    
+
 
 
     private void Awake()
     {
-        currentHealth = maxHealth;
+        currentHealth = maxHealth; // At start set current health to be full
         anim = GetComponent<Animator>();
 // Sets how far are the left and right edge 
         leftEdge = transform.position.x - movementDistance;
@@ -135,7 +138,7 @@ public class EnemyController : MonoBehaviour
         gameObject.transform.localScale = currentScale;
     }
 
-
+// Draw a OverlapCircle created in attack player 
     void OnDrawGizmosSelected(){
         if(attackPoint == null){
             return;

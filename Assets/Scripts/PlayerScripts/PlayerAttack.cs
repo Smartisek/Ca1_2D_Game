@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-
+[Header("Attack/Knife variables")]
     [SerializeField] private float attackCooldown;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] knifesHolder;
-
     [SerializeField] private float attackRange;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LayerMask enemyLayer;
@@ -42,6 +41,7 @@ public class PlayerAttack : MonoBehaviour
 // function for throwing knifes, set animation and reset cooldown, then makes the knife fly in the right direction
 // knifesHolder is an object in unity that has all the prefab knifes inside so it is an array, we set their transform position 
 // to be a firePoint position which is and empty object under player that just sets knifes "spawner"
+// For the throwing knife ability I followed a tutorial from Pandemonium on Youtube: https://www.youtube.com/watch?v=PUpC44Q64zY&list=PLgOEwFbvGm5o8hayFB6skAfa8Z-mw4dPV&index=4
     private void AttackKnife(){
         anim.SetTrigger("throwKnife");
         cooldownTimer =0;
@@ -69,6 +69,7 @@ public class PlayerAttack : MonoBehaviour
 // Creates a collider2d array of all the enemies player hits
 // Inside unity I create an object attackPoint and then with physics2d overlapcircle all function draw a circle around this object 
 // this functiom takes in the positon, range and layer, my layer is set to enemies
+// For melee attack I followed Brackeys on Youtube: https://www.youtube.com/watch?v=sPiVz1k-fEs&t=1088s
     private void AttackMelee(){
         anim.SetTrigger("attack");
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);

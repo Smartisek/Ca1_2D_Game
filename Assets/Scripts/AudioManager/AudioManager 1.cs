@@ -20,6 +20,8 @@ public class AudioManager : MonoBehaviour
         private AudioSource soundEffectSource;
         private AudioSource backgroundMusicSource;
 
+// Singleton, is an object that gets created only once in a game cycle, if there is any duplicate destroy it 
+// From Naoise's code in class, I did this whole script based on our last class 
         public void Awake(){
             if(instance == null){
                 instance = this;
@@ -32,6 +34,7 @@ public class AudioManager : MonoBehaviour
         soundEffectSource = gameObject.AddComponent<AudioSource>();
         backgroundMusicSource = gameObject.AddComponent<AudioSource>();
 
+// Loop the background music so it doesnt stop playing when whole song finishes 
         backgroundMusicSource.clip = backgroundMusic;
         backgroundMusicSource.loop = true;
         backgroundMusicSource.Play();
