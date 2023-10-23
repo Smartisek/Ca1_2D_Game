@@ -35,7 +35,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator animate;
     [SerializeField] private LayerMask groundLayer; // Accessing the layers in unity
     [SerializeField] private LayerMask wallLayer; // Accessing the layers in unity
-
+  
+    
 
 // Variables for sounds and accesing audio
 private AudioSource audioPlayer;
@@ -55,6 +56,7 @@ private AudioSource audioPlayer;
     {
         Run();
         JumpHandling();
+
     }
 
     private void Jump(){

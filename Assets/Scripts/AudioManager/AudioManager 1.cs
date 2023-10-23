@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
         public AudioClip die;
         public AudioClip health;
 
+
         private AudioSource soundEffectSource;
         private AudioSource backgroundMusicSource;
 
@@ -38,6 +39,8 @@ public class AudioManager : MonoBehaviour
         backgroundMusicSource.clip = backgroundMusic;
         backgroundMusicSource.loop = true;
         backgroundMusicSource.Play();
+
+        backgroundMusicSource.volume = 0.75f;
         }
 
         public void PlayJumpSound(){

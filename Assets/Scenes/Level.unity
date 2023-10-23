@@ -10350,6 +10350,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementDistance: 3
   speed: 4
+--- !u!1 &1020263120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1020263122}
+  - component: {fileID: 1020263121}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1020263121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020263120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fc7879a11a49f44a0a27099615131b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1020263122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020263120}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.4352746, y: -1.166365, z: 0.25130743}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1034426677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11401,7 +11445,7 @@ MonoBehaviour:
   gettingHurt: {fileID: 8300000, guid: ea51d6df135a53c41a7c15cd4d94024d, type: 3}
   score: {fileID: 8300000, guid: a49b793427721394d94455f20b93e368, type: 3}
   knifeThrow: {fileID: 8300000, guid: 2c49e7dba31178d40848fbd1fefddde4, type: 3}
-  backgroundMusic: {fileID: 0}
+  backgroundMusic: {fileID: 8300000, guid: 2c2f9f01b7554ae408cb2d66ed85ea72, type: 3}
   die: {fileID: 8300000, guid: e19fbc5cd9a2eb741b3547a407bfd469, type: 3}
   health: {fileID: 8300000, guid: 5e4f394cf24d7f24cbdb4076e6aa11f4, type: 3}
 --- !u!4 &1470562386
