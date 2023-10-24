@@ -5,18 +5,21 @@ using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 
+
 public class ScoreCounter : MonoBehaviour
 {   
     // reference to a text that will increase when we get a bird 
-    [SerializeField] TMP_Text scoreText;
+    [SerializeField] TMP_Text scoreText; //Displays in the game
      int currentScore = 0;
-    [SerializeField] TMP_Text finalScore;
+    [SerializeField] TMP_Text finalScore; //Will display in final page 
+    
+   
 
     // assign 0 score when start and display it as a string 
     private void Start(){
-        scoreText.text = currentScore.ToString();
-       
+        scoreText.text = currentScore.ToString(); 
     }
+
 
 
 
@@ -28,5 +31,7 @@ public class ScoreCounter : MonoBehaviour
         scoreText.text = currentScore.ToString();
         finalScore.text = currentScore.ToString();
     }
+
+
 
 }
