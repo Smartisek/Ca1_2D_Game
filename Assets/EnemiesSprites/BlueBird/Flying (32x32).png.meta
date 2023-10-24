@@ -78,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -111,6 +111,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -344,7 +356,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Flying (32x32)_0: 6570920502705930198
+      Flying (32x32)_1: 3944408015643112240
+      Flying (32x32)_2: 3853816143673293235
+      Flying (32x32)_3: -3032164649882222076
+      Flying (32x32)_4: 3545866933577851776
+      Flying (32x32)_5: 3029354677832749505
+      Flying (32x32)_6: 2030330461010847512
+      Flying (32x32)_7: 8186078023339056789
+      Flying (32x32)_8: 5717007125227293428
+      Flying (32x32)_9: 3366276820443181691
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
