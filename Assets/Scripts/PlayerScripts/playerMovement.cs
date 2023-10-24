@@ -35,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator animate;
     [SerializeField] private LayerMask groundLayer; // Accessing the layers in unity
     [SerializeField] private LayerMask wallLayer; // Accessing the layers in unity
+
+   
   
     
 
@@ -56,7 +58,7 @@ private AudioSource audioPlayer;
     {
         Run();
         JumpHandling();
-
+        
     }
 
     private void Jump(){
@@ -191,4 +193,5 @@ private void JumpHandling(){
 
         // print(MathF.Sin(transform.localScale.x));
     }
+
 }

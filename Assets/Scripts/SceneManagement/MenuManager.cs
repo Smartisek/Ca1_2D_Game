@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
 
+   
     [SerializeField] private String gameSceneName;
     [SerializeField] private String optionSceneName;
+
     
     public void StartGame(){
         SceneManager.LoadScene(gameSceneName);
@@ -19,5 +21,6 @@ public class MenuManager : MonoBehaviour
     public void QuitGame(){
         Application.Quit();
     }
+
 
 }

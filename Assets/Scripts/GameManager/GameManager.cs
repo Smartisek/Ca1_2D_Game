@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+// Code followeb by labs from Naoise
     public GameManager instance;
+    [SerializeField] GameObject finishPage;
 
 [Header("Game Manager")]
     public bool isPaused;
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
                 PauseGame();
             }
         }
+
     }
 
     public void LoadMainMenu(){
@@ -46,8 +49,17 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    public void Restart(){
+        SceneManager.LoadScene("Level");
+    }
+
     public void ResumeGame(){
         isPaused = false;
         Time.timeScale = 1f;
     }
+
+    public void FinishGame(){
+        finishPage.SetActive(true);
+    }
+
 }

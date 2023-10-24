@@ -16,6 +16,7 @@ public class AudioManager : MonoBehaviour
         public AudioClip backgroundMusic;
         public AudioClip die;
         public AudioClip health;
+        public AudioClip win;
 
 
         private AudioSource soundEffectSource;
@@ -69,6 +70,10 @@ public class AudioManager : MonoBehaviour
 
         public void PlayPickHealth(){
             soundEffectSource.PlayOneShot(health);
+        }
+
+        public void PlayWinSound(){
+            soundEffectSource.PlayOneShot(win);
         }
 
 
