@@ -144,11 +144,4 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(backPoint.position, 0.5f);
 
     }
-
-    // private void TurnPlayer(){
-    //     var backCollider = Physics2D.OverlapCircle(backPoint.position, 0.5f, playerMask);
-    //     if(backCollider){
-    //         Flip();
-    //     }
-    // }
 }

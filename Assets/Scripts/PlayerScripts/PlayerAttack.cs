@@ -15,8 +15,7 @@ public class PlayerAttack : MonoBehaviour
 
     private Animator anim;
     private PlayerMovement playerMovement;
-// For start set to infinity otherwise could never use attack because of the condition in update 
-    private float cooldownTimer = Mathf.Infinity;
+    private float cooldownTimer = Mathf.Infinity; // For start set to infinity otherwise could never use attack because of the condition in update
   
     private void Awake()
     {

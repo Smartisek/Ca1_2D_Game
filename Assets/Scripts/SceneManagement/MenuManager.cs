@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private String gameSceneName;
     [SerializeField] private String optionSceneName;
 
+
     
     public void StartGame(){
         SceneManager.LoadScene(gameSceneName);
@@ -17,6 +18,7 @@ public class MenuManager : MonoBehaviour
     public void OptionsMenu(){
         SceneManager.LoadScene(optionSceneName);
     }
+
 
     public void QuitGame(){
         Application.Quit();
