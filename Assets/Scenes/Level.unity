@@ -197,6 +197,10 @@ PrefabInstance:
       value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 4611267122418887429, guid: 1e5c6d8b6b3419a4d9a99195a834f816, type: 3}
+      propertyPath: damageAttack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4611267122418887429, guid: 1e5c6d8b6b3419a4d9a99195a834f816, type: 3}
       propertyPath: movementDistance
       value: 4
       objectReference: {fileID: 0}
@@ -335,6 +339,7 @@ Transform:
   - {fileID: 1189074355}
   - {fileID: 685334179}
   - {fileID: 2047873243}
+  - {fileID: 1805139788}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1624,6 +1629,10 @@ PrefabInstance:
     - target: {fileID: 4611267122418887429, guid: 1e5c6d8b6b3419a4d9a99195a834f816, type: 3}
       propertyPath: attackRange
       value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4611267122418887429, guid: 1e5c6d8b6b3419a4d9a99195a834f816, type: 3}
+      propertyPath: damageAttack
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4611267122418887429, guid: 1e5c6d8b6b3419a4d9a99195a834f816, type: 3}
       propertyPath: movementDistance
@@ -15781,6 +15790,72 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1805139787
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 52196740}
+    m_Modifications:
+    - target: {fileID: 2161671137871983067, guid: 4808c4ee7f5edc940a2f06af51cfee1b, type: 3}
+      propertyPath: m_Name
+      value: Bird2 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335362743368713794, guid: 4808c4ee7f5edc940a2f06af51cfee1b, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335362743368713794, guid: 4808c4ee7f5edc940a2f06af51cfee1b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335362743368713794, guid: 4808c4ee7f5edc940a2f06af51cfee1b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335362743368713794, guid: 4808c4ee7f5edc940a2f06af51cfee1b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0685036
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335362743368713794, guid: 4808c4ee7f5edc940a2f06af51cfee1b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335362743368713794, guid: 4808c4ee7f5edc940a2f06af51cfee1b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335362743368713794, guid: 4808c4ee7f5edc940a2f06af51cfee1b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335362743368713794, guid: 4808c4ee7f5edc940a2f06af51cfee1b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335362743368713794, guid: 4808c4ee7f5edc940a2f06af51cfee1b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335362743368713794, guid: 4808c4ee7f5edc940a2f06af51cfee1b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335362743368713794, guid: 4808c4ee7f5edc940a2f06af51cfee1b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4808c4ee7f5edc940a2f06af51cfee1b, type: 3}
+--- !u!4 &1805139788 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3335362743368713794, guid: 4808c4ee7f5edc940a2f06af51cfee1b, type: 3}
+  m_PrefabInstance: {fileID: 1805139787}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1827155389
 GameObject:
   m_ObjectHideFlags: 0
@@ -17475,6 +17550,10 @@ PrefabInstance:
     - target: {fileID: 4611267122418887429, guid: 1e5c6d8b6b3419a4d9a99195a834f816, type: 3}
       propertyPath: attackRange
       value: 0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 4611267122418887429, guid: 1e5c6d8b6b3419a4d9a99195a834f816, type: 3}
+      propertyPath: damageAttack
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4611267122418887429, guid: 1e5c6d8b6b3419a4d9a99195a834f816, type: 3}
       propertyPath: movementDistance

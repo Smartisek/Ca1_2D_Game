@@ -13,9 +13,11 @@ public class TextSlider : MonoBehaviour
    public void Start(){
     slider = GetComponent<Slider>();
     SetVolumeNumber(slider.value);
+    AudioListener.volume = slider.value/2;
    }
 
    public void SetVolumeNumber(float value){
+      AudioListener.volume = value/2;
     numberText.text = value.ToString();
    }
 }
