@@ -176,7 +176,7 @@ private void JumpHandling(){
                 bodyRigid.velocity = Vector2.zero;
     // else if player tries to move back then we set gravity back to default and give him control to move again 
             } else {
-                bodyRigid.gravityScale = 11;
+                bodyRigid.gravityScale = 3;
                 bodyRigid.velocity = new Vector2(horizontalInput * moveSpeed, bodyRigid.velocity.y);
 
     // When player falls back to the ground then we reset the jumpCounter so he is able to use his extra jump/jumps
