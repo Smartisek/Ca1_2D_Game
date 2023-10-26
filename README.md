@@ -5,7 +5,11 @@
 Presentation Video: https://youtu.be/oqIZE3yaztk
 Gameplay Video: https://youtu.be/-CrjiGLgSXA
 
+Assignment Cover Sheet 
+
+
  *****Resources / Code References******
+[CA-cover-sheet-DKIT.docx](https://github.com/Smartisek/Ca1_2D_Game/files/13174644/CA-cover-sheet-DKIT.docx)
 
  Sprites
 https://www.gameart2d.com/ninja-adventure---free-sprites.html
